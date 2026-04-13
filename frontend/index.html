@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REST API Student Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>REST API - Student Manager</h1>
+        <p class="subtitle">Learn REST APIs by managing students</p>
+        <div class="backend-toggle">
+            <label>Backend:</label>
+            <select id="backendSelect">
+                <option value="js">JavaScript (Express) - Port 3000</option>
+                <option value="python">Python (FastAPI) - Port 8000</option>
+            </select>
+            <span id="connectionStatus" class="status-dot status-disconnected" title="Disconnected"></span>
+        </div>
+    </header>
+
+    <main>
+        <!-- Request Logger Panel -->
+        <section class="request-logger">
+            <h2>HTTP Request/Response Logger</h2>
+            <p class="hint">Watch the HTTP requests and responses as you interact with the app</p>
+            <div id="logPanel" class="log-panel">
+                <p class="log-placeholder">Logs will appear here when you perform actions...</p>
+            </div>
+            <button onclick="clearLogs()" class="btn btn-secondary">Clear Logs</button>
+        </section>
+
+        <div class="content-grid">
+            <!-- Add/Edit Student Form -->
+            <section class="form-section">
+                <h2 id="formTitle">Add New Student</h2>
+                <form id="studentForm">
+                    <input type="hidden" id="studentId">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" placeholder="e.g., John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" placeholder="e.g., john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="course">Course *</label>
+                        <input type="text" id="course" placeholder="e.g., Computer Science" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" placeholder="e.g., 20" min="10" max="100">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" id="submitBtn" class="btn btn-primary">
+                            POST - Create Student
+                        </button>
+                        <button type="button" onclick="cancelEdit()" id="cancelBtn" class="btn btn-secondary" style="display:none;">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Partial Update Section -->
+                <div class="patch-section">
+                    <h3>PATCH - Partial Update</h3>
+                    <p class="hint">Update only specific fields of a student</p>
+                    <div class="form-group">
+                        <label for="patchId">Student ID</label>
+                        <input type="number" id="patchId" placeholder="Enter student ID">
+                    </div>
+                    <div class="form-group">
+                        <label for="patchField">Field to Update</label>
+                        <select id="patchField">
+                            <option value="name">Name</option>
+                            <option value="email">Email</option>
+                            <option value="course">Course</option>
+                            <option value="age">Age</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="patchValue">New Value</label>
+                        <input type="text" id="patchValue" placeholder="Enter new value">
+                    </div>
+                    <button onclick="patchStudent()" class="btn btn-warning">
+                        PATCH - Update Field
+                    </button>
+                </div>
+            </section>
+
+            <!-- Student List -->
+            <section class="list-section">
+                <div class="list-header">
+                    <h2>Students List</h2>
+                    <div class="list-actions">
+                        <button onclick="fetchStudents()" class="btn btn-primary">
+                            GET - Fetch All
+                        </button>
+                        <div class="search-box">
+                            <input type="number" id="searchId" placeholder="Student ID">
+                            <button onclick="fetchStudentById()" class="btn btn-info">
+                                GET - Fetch by ID
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div id="studentList" class="student-list">
+                    <p class="empty-state">Click "GET - Fetch All" to load students</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>REST API Teaching App | Express.js + FastAPI + SQLite | 
+            <a href="https://github.com/EricKart/RESTAPI" target="_blank">GitHub Repo</a>
+        </p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

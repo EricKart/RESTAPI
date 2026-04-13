@@ -1,0 +1,365 @@
+/* ============================================
+   REST API Student Manager - Stylesheet
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px 40px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    opacity: 0.9;
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+.backend-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.backend-toggle label {
+    font-weight: 600;
+}
+
+.backend-toggle select {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: none;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.status-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.status-connected {
+    background-color: #2ecc71;
+    box-shadow: 0 0 6px #2ecc71;
+}
+
+.status-disconnected {
+    background-color: #e74c3c;
+    box-shadow: 0 0 6px #e74c3c;
+}
+
+/* Main */
+main {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+/* Request Logger */
+.request-logger {
+    background: #1e1e1e;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    color: #d4d4d4;
+}
+
+.request-logger h2 {
+    color: #569cd6;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+.request-logger .hint {
+    color: #808080;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+}
+
+.log-panel {
+    background: #0d0d0d;
+    border-radius: 6px;
+    padding: 15px;
+    max-height: 250px;
+    overflow-y: auto;
+    font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+}
+
+.log-placeholder {
+    color: #555;
+    font-style: italic;
+}
+
+.log-entry {
+    margin-bottom: 12px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 8px;
+}
+
+.log-method {
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+.log-method.GET { background: #2ecc71; color: #000; }
+.log-method.POST { background: #f39c12; color: #000; }
+.log-method.PUT { background: #3498db; color: #fff; }
+.log-method.PATCH { background: #9b59b6; color: #fff; }
+.log-method.DELETE { background: #e74c3c; color: #fff; }
+
+.log-url { color: #ce9178; }
+.log-status { color: #b5cea8; }
+.log-status.error { color: #f44747; }
+.log-body { color: #9cdcfe; margin-top: 4px; }
+.log-response { color: #dcdcaa; margin-top: 4px; }
+.log-time { color: #555; font-size: 0.75rem; }
+
+/* Content Grid */
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Form Section */
+.form-section {
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.form-section h2 {
+    color: #667eea;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.patch-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px dashed #e0e0e0;
+}
+
+.patch-section h3 {
+    color: #9b59b6;
+    margin-bottom: 5px;
+}
+
+.hint {
+    color: #888;
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+}
+
+/* Buttons */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: transform 0.1s, box-shadow 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-primary { background: #667eea; color: white; }
+.btn-secondary { background: #95a5a6; color: white; }
+.btn-danger { background: #e74c3c; color: white; }
+.btn-warning { background: #9b59b6; color: white; }
+.btn-info { background: #3498db; color: white; }
+.btn-edit { background: #3498db; color: white; font-size: 0.8rem; padding: 6px 12px; }
+
+/* List Section */
+.list-section {
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.list-section h2 {
+    color: #667eea;
+}
+
+.list-header {
+    margin-bottom: 20px;
+}
+
+.list-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.search-box {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.search-box input {
+    width: 100px;
+    padding: 8px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+}
+
+.student-list {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.empty-state {
+    text-align: center;
+    color: #aaa;
+    padding: 40px 20px;
+    font-style: italic;
+}
+
+/* Student Card */
+.student-card {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-left: 4px solid #667eea;
+    transition: box-shadow 0.2s;
+}
+
+.student-card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.student-card .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.student-card .card-header h3 {
+    font-size: 1rem;
+    color: #333;
+}
+
+.student-card .card-header .student-id {
+    background: #667eea;
+    color: white;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.student-card .card-body p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 3px;
+}
+
+.student-card .card-body span {
+    font-weight: 600;
+    color: #444;
+}
+
+.student-card .card-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #888;
+    font-size: 0.85rem;
+    margin-top: 30px;
+}
+
+footer a {
+    color: #667eea;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
