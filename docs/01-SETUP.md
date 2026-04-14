@@ -339,18 +339,18 @@ This happens when using **Python 3.13** with an older `requirements.txt` that pi
 **Fix:**
 
 ```bash
-pip install --upgrade fastapi uvicorn[standard] pydantic
+# Step 1: Pull the latest repo (fixes requirements.txt)
+git pull
+
+# Step 2: Inside python-backend/, reinstall dependencies
+cd python-backend
+pip install -r requirements.txt
 ```
 
-Or delete and recreate the virtual environment, then reinstall:
+If you already have a virtual environment activated, upgrade directly:
 
 ```bash
-# Windows
-deactivate
-rmdir /s /q venv
-python -m venv venv
-venv\Scripts\activate
-pip install -r requirements.txt
+pip install --upgrade fastapi uvicorn[standard] pydantic
 ```
 
 ### "Module not found" errors (Python)
@@ -380,14 +380,18 @@ pip install -r requirements.txt
 
 This happens because **`better-sqlite3`** is a native addon that needs to be compiled from source when no prebuilt binary exists for your Node.js version. The version pinned in `package.json` may not yet have a prebuilt binary for your Node.js release.
 
-**Fix — update `better-sqlite3` to the latest version:**
+**Fix:**
 
 ```bash
+# Step 1: Pull the latest repo (fixes package.json)
+git pull
+
+# Step 2: Inside js-backend/, update better-sqlite3
 cd js-backend
 npm install better-sqlite3@latest
 ```
 
-This fetches the newest release which includes prebuilt binaries for recent Node.js versions. Then run `npm start` as normal.
+Then run `npm start` as normal.
 
 ### SQLite database issues
 
