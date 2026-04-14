@@ -28,7 +28,7 @@ Open a terminal (Command Prompt, PowerShell, or Terminal) and run:
 node --version
 ```
 
-**Expected output**: `v18.x.x` or higher (e.g., `v20.11.0`)
+**Expected output**: `v18.x.x` or higher (e.g., `v20.11.0`, `v22.x.x`, `v24.x.x`)
 
 If you **don't** have Node.js:
 1. Go to [https://nodejs.org](https://nodejs.org)
@@ -354,6 +354,19 @@ You can run both backends at the same time (they use different ports):
 
 - The backend server is not running
 - Start it with `npm start` (JS) or `python main.py` (Python)
+
+### `npm install` fails with "Could not find any Visual Studio installation" or node-gyp error
+
+This happens because **`better-sqlite3`** is a native addon that needs to be compiled from source when no prebuilt binary exists for your Node.js version. The version pinned in `package.json` may not yet have a prebuilt binary for your Node.js release.
+
+**Fix — update `better-sqlite3` to the latest version:**
+
+```bash
+cd js-backend
+npm install better-sqlite3@latest
+```
+
+This fetches the newest release which includes prebuilt binaries for recent Node.js versions. Then run `npm start` as normal.
 
 ### SQLite database issues
 
