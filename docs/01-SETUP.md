@@ -332,6 +332,27 @@ You can run both backends at the same time (they use different ports):
 - On Windows, try `py` instead of `python`
 - Reinstall Python and check "Add Python to PATH"
 
+### `pip install` fails with "pydantic-core" or "maturin" or Rust error
+
+This happens when using **Python 3.13** with an older `requirements.txt` that pins package versions which predate Python 3.13 wheels. pip then tries to compile `pydantic-core` from source, which requires Rust — and fails.
+
+**Fix:**
+
+```bash
+pip install --upgrade fastapi uvicorn[standard] pydantic
+```
+
+Or delete and recreate the virtual environment, then reinstall:
+
+```bash
+# Windows
+deactivate
+rmdir /s /q venv
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+```
+
 ### "Module not found" errors (Python)
 
 - Make sure you're in the `python-backend` directory
